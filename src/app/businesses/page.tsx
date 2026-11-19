@@ -3,6 +3,7 @@ import pool from '@/lib/db';
 import type { Business, Category } from '@/types';
 
 async function getData(category?: string) {
+  'use cache'
   let query = `
     SELECT b.*, c.name as category_name, c.slug as category_slug
     FROM businesses b

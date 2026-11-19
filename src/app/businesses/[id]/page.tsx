@@ -3,6 +3,7 @@ import pool from '@/lib/db';
 import type { Business } from '@/types';
 
 async function getBusiness(id: string): Promise<Business | null> {
+  'use cache'
   const result = await pool.query(
     `SELECT b.*, c.name as category_name, c.slug as category_slug
      FROM businesses b
